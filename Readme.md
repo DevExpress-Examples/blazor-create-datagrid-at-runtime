@@ -7,7 +7,7 @@
 ### DataGrid for Blazor - How to create DataGrid and its columns at runtime
 
 This example shows how to create DataGrid components at runtime and create its columns dynamically.
-The easiest way to do so is to write a method that returns the **RenderFragment<T>** object, for example, in the following manner:
+The easiest way to do so is to write a method that returns the **RenderFragment\<T\>** object, for example, in the following manner:
 ```
 RenderFragment<DataItem> buildGridsWithColumns = (dataObject) =>
 @<DxDataGrid Data="@dataObject.Data">
