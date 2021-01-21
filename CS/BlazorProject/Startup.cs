@@ -28,6 +28,7 @@ namespace BlazorProject
         {
             services.AddRazorPages();
             services.AddServerSideBlazor();
+            services.AddDevExpressBlazor();
             services.AddSingleton<WeatherForecastService>();
         }
 
