@@ -10,11 +10,14 @@ This example shows how to create DataGrid components at runtime and create its c
 The easiest way to do so is to write a method that returns the **RenderFragment\<T\>** object, for example, in the following manner:
 ```
 RenderFragment<DataItem> buildGridsWithColumns = (dataObject) =>
-@<DxDataGrid Data="@dataObject.Data">
-    @foreach (var column in dataObject.ColumnNames)
-    {
-        <DxDataGridColumn Field="@column" />
-    }
-</DxDataGrid>;
+@{ RenderFragment<DataItem> buildGridsWithColumns = (dataObject) =>
+    @<DxDataGrid CssClass="mw-1100" @ref="grid" Data="@dataObject.Data">
+        <Columns>
+
+            @foreach (var column in dataObject.ColumnNames)
+            {
+                <DxDataGridColumn @key="@column" Caption="@column" Field="@column" Width="400px" />}
+        </Columns>
+    </DxDataGrid>; }
 ```
 The call of such a method creates a grid with columns.
