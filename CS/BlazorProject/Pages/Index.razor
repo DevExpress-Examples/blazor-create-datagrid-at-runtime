@@ -9,63 +9,58 @@
 @{ RenderFragment<DataItem> buildGridsWithColumns = (dataObject) =>
     @<DxDataGrid CssClass="mw-1100" @ref="grid" Data="@dataObject.Data">
         <Columns>
-
             @foreach (var column in dataObject.ColumnNames)
             {
-                <DxDataGridColumn @key="@column" Caption="@column" Field="@column" Width="400px" />}
+                <DxDataGridColumn @key="@column" Caption="@column" Field="@column" Width="400px" />
+            }
         </Columns>
-    </DxDataGrid>; }
+    </DxDataGrid>; 
+}
 <DxCheckBox Checked="@IsChecked" CheckedChanged="@((bool value) => OnCheckedChanged(value))">Change data source</DxCheckBox>
-
 
 @buildGridsWithColumns(IsChecked ? dataObjects[0] : dataObjects[1])
 
 
-@code { DxDataGrid<DataObject> grid;
-            List<DataItem> dataObjects;
+@code { 
+    DxDataGrid<DataObject> grid;
+    List<DataItem> dataObjects;
 
-            bool IsChecked;
+    bool IsChecked;
 
-            protected void OnCheckedChanged(bool isChecked)
-            {
-                IsChecked = isChecked;
-                grid.Refresh();
-                InvokeAsync(StateHasChanged);
+    protected void OnCheckedChanged(bool isChecked) {
+        IsChecked = isChecked;
+        grid.Refresh();
+        InvokeAsync(StateHasChanged);
+    }
+
+    protected override void OnInitialized() {
+        dataObjects = new List<DataItem>();
+        for (int i = 0; i < 2; i++) {
+            DataItem dataItem = new DataItem();
+            List<DataObject> list = new List<DataObject>();
+            List<string> columnNames = new List<string>();
+
+            for (int j = 0; j < 5; j++) {
+                list.Add(new DataObject() { A = j, B = "text " + j, C = "item " + j, D = "D" + j });
             }
-
-            protected override void OnInitialized()
-            {
-                dataObjects = new List<DataItem>();
-                for (int i = 0; i < 2; i++)
-                {
-                    DataItem dataItem = new DataItem();
-                    List<DataObject> list = new List<DataObject>();
-                    List<string> columnNames = new List<string>();
-
-                    for (int j = 0; j < 5; j++)
-                    {
-                        list.Add(new DataObject() { A = j, B = "text " + j, C = "item " + j, D = "D" + j });
-                    }
-                    columnNames = i % 2 == 0 ? new List<string>() { "A", "B" } : new List<string>() { "C", "D" };
-                    dataItem.Data = list;
-                    dataItem.ColumnNames = columnNames;
-
-                    dataObjects.Add(dataItem);
-                }
+            columnNames = i % 2 == 0 ? new List<string>() { "A", "B" } : new List<string>() { "C", "D" };
+            dataItem.Data = list;
+            dataItem.ColumnNames = columnNames;
+            dataObjects.Add(dataItem);
+        }
+    }
 
 
-            }
-
-           
-            public class DataObject
-            {
-                public int A { get; set; }
-                public string B { get; set; }
-                public string C { get; set; }
-                public string D { get; set; }
-            }
-            public class DataItem
-            {
-                public IEnumerable<DataObject> Data { get; set; }
-                public List<string> ColumnNames { get; set; }
-            } }
+    public class DataObject
+    {
+        public int A { get; set; }
+        public string B { get; set; }
+        public string C { get; set; }
+        public string D { get; set; }
+    }
+    public class DataItem
+    {
+        public IEnumerable<DataObject> Data { get; set; }
+        public List<string> ColumnNames { get; set; }
+    }
+}
