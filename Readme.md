@@ -9,7 +9,7 @@ This example shows how to create the Data Grid component at runtime and generate
 
 ![Change Grid Content at Runtime](images/datagrid-change-data-on-run.gif)
 
-The main idea of this example is to implement a method that returns the **RenderFragment<T>** object, for example, as follows:
+To do this, implement a method that returns the **RenderFragment<T>** object, for example, as follows:
 
 ```
 RenderFragment<DataItem> buildGridsWithColumns = (dataObject) =>
