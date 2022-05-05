@@ -6,6 +6,8 @@
 
 # DataGrid for Blazor - How to create the DataGrid and its columns at runtime
 
+The Data Grid was moved to maintenance support mode. No new features/capabilities will be added to this component. We recommend that you [migrate](https://docs.devexpress.com/Blazor/403162/grid/migrate-from-data-grid-to-grid) to the [Grid](https://docs.devexpress.com/Blazor/403143/grid) component. 
+
 This example shows how to create the Data Grid component at runtime and generate its columns dynamically.
 
 ![Change Grid Content at Runtime](images/datagrid-change-data-on-run.gif)
