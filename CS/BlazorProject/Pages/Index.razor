@@ -23,7 +23,6 @@
 @code { 
     DxDataGrid<DataObject> grid;
     List<DataItem> dataObjects;
-
     bool IsChecked;
 
     protected void OnCheckedChanged(bool isChecked) {
@@ -49,16 +48,14 @@
         }
     }
 
-    public class DataObject
-    {
+    public class DataObject {
         public int A { get; set; }
         public string B { get; set; }
         public string C { get; set; }
         public string D { get; set; }
     }
-    public class DataItem
-    {
-        public IEnumerable<DataObject> Data { get; set; }
+    public class DataItem {
+        public IEnumerable<DataObject>? Data { get; set; }
         public List<string> ColumnNames { get; set; }
     }
 }
